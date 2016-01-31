@@ -60,8 +60,88 @@ public class GeneticAlgorithm {
 		ePopulation.setEPopulationFitness(ePopulationFitness);
 	}
 	
+	/**
+	 * If the fitness of any android in the population is 1 we are good!
+	 * @param ePopulation
+	 * @return
+	 */
+	public boolean isTerminationConditionMet(EPopulation ePopulation) {
+		for (Android android: ePopulation.getAndroids()) {
+			if (android.getFitness() == 1) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Android selectParent(EPopulation ePopulation) {
+		// Gets the androids
+		Android[] androids = ePopulation.getAndroids();
+		
+		// Spin the roulette's wheel
+		double ePopulationFitness = ePopulation.getEPopulationFitness();
+		double rouletteWheelPosition = Math.random() * ePopulationFitness;
+		
+		// Parent where are you?
+		double spinWheel = 0;
+		for (Android android: androids) {
+			spinWheel += android.getFitness();
+			if (spinWheel >= rouletteWheelPosition) {
+				return android;
+			}
+		}
+		
+		// We did not find any suitable parent: the last one will do.
+		return androids[ePopulation.size() -1];
+	}
+	
+	
+	public EPopulation crossoverEPopulation(EPopulation ePopulation) {
+		// Creates the new EPopulation
+		EPopulation newEPopulation = new EPopulation(ePopulation.size());
+		
+		// Fitnessly loop over current ePopulation
+		for (int ePopulationIndex = 0; ePopulationIndex < ePopulation.size(); ePopulationIndex++) {
+			Android parent1 = ePopulation.getFittest(ePopulationIndex);
+			
+			// Is this android good for crossover?
+			if (this.crossoverRate > Math.random() && ePopulationIndex >  this.elitismCount) {
+				
+				// Initializing the offspring
+				Android offspring = new Android (parent1.getEChromosomeLength());
+				
+				Android parent2 = selectParent(ePopulation);
+				
+				// Loop over the eGenome
+				for (int eGeneIndex = 0; eGeneIndex < parent1.getEChromosomeLength(); eGeneIndex++) {
+					// Using half of each parent's eGenes
+					// Meaning that each parent has 50% chances to set the given gene
+					// This is done using Math.random and comparing the value to 50%
+					if (0.5 > Math.random()) {
+						offspring.setEGene(eGeneIndex, parent1.getEGene(eGeneIndex));
+						
+					} else {
+						offspring.setEGene(eGeneIndex, parent2.getEGene(eGeneIndex));
+					}
+				}
+				
+				// This offspring will now be part of the new ePopulation
+				newEPopulation.setAndroid(ePopulationIndex, offspring);
+				
+				
+			}
+			
+			// In case the crossoverrate condition is not met we do not apply crossover and 
+			//  the android's parent is replicated in the new population as is
+			else {
+				newEPopulation.setAndroid(ePopulationIndex, parent1);
+			}
+		}
+		
+		return newEPopulation;
+	}
 	
 	
 	
-
+	
 }

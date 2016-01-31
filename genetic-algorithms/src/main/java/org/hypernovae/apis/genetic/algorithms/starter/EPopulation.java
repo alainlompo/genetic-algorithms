@@ -45,6 +45,10 @@ public class EPopulation {
 		this.ePopulationFitness = fitness;
 	}
 	
+	public double getEPopulationFitness() {
+		return this.ePopulationFitness;
+	}
+	
 	public int size() {
 		return this.ePopulation.length;
 	}
