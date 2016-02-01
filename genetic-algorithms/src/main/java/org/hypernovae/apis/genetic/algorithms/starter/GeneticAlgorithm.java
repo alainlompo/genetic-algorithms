@@ -74,6 +74,11 @@ public class GeneticAlgorithm {
 		return false;
 	}
 	
+	/**
+	 * We spin a roulette's wheel (ran domly, no cheating) and find out what android is luckily picked by thee (e) nature
+	 * @param ePopulation
+	 * @return
+	 */
 	public Android selectParent(EPopulation ePopulation) {
 		// Gets the androids
 		Android[] androids = ePopulation.getAndroids();
@@ -95,7 +100,11 @@ public class GeneticAlgorithm {
 		return androids[ePopulation.size() -1];
 	}
 	
-	
+	/**
+	 * Simple crossover's implementation approach
+	 * @param ePopulation
+	 * @return
+	 */
 	public EPopulation crossoverEPopulation(EPopulation ePopulation) {
 		// Creates the new EPopulation
 		EPopulation newEPopulation = new EPopulation(ePopulation.size());
@@ -126,9 +135,7 @@ public class GeneticAlgorithm {
 				}
 				
 				// This offspring will now be part of the new ePopulation
-				newEPopulation.setAndroid(ePopulationIndex, offspring);
-				
-				
+				newEPopulation.setAndroid(ePopulationIndex, offspring);	
 			}
 			
 			// In case the crossoverrate condition is not met we do not apply crossover and 
