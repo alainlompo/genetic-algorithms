@@ -163,22 +163,11 @@ public class GeneticAlgorithm {
 				if (ePopulationIndex >= this.elitismCount) {
 					// Will this eGene (E)naturally mutate?
 					if (this.mutationRate > Math.random()) {
-						int newEGene = 1;
-						if (android.getEGene(eGeneIndex) == 1) {
-							newEGene = 0;
-						}
 						
-						// E-mutation
-						android.setEGene(eGeneIndex, newEGene);
 					}
 				}
 			}
-			
-			// Add the android to the new EPopulation
-			newEPopulation.setAndroid(ePopulationIndex, android);
 		}
-		
-		return newEPopulation;
 		
 	}
 	

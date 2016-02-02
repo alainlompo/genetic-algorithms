@@ -167,18 +167,10 @@ public class GeneticAlgorithm {
 						if (android.getEGene(eGeneIndex) == 1) {
 							newEGene = 0;
 						}
-						
-						// E-mutation
-						android.setEGene(eGeneIndex, newEGene);
 					}
 				}
 			}
-			
-			// Add the android to the new EPopulation
-			newEPopulation.setAndroid(ePopulationIndex, android);
 		}
-		
-		return newEPopulation;
 		
 	}
 	

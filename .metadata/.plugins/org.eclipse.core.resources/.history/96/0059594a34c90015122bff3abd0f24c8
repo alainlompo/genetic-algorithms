@@ -173,12 +173,7 @@ public class GeneticAlgorithm {
 					}
 				}
 			}
-			
-			// Add the android to the new EPopulation
-			newEPopulation.setAndroid(ePopulationIndex, android);
 		}
-		
-		return newEPopulation;
 		
 	}
 	

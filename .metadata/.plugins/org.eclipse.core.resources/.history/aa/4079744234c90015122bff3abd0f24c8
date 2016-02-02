@@ -169,16 +169,11 @@ public class GeneticAlgorithm {
 						}
 						
 						// E-mutation
-						android.setEGene(eGeneIndex, newEGene);
+						
 					}
 				}
 			}
-			
-			// Add the android to the new EPopulation
-			newEPopulation.setAndroid(ePopulationIndex, android);
 		}
-		
-		return newEPopulation;
 		
 	}
 	

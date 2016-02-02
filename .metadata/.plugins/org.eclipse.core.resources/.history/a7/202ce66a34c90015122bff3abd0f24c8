@@ -178,8 +178,6 @@ public class GeneticAlgorithm {
 			newEPopulation.setAndroid(ePopulationIndex, android);
 		}
 		
-		return newEPopulation;
-		
 	}
 	
 	

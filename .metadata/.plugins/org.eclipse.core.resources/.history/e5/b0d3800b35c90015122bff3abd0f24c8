@@ -22,7 +22,6 @@ public class AllOnesGA {
 			ePopulation = ga.crossoverEPopulation(ePopulation);
 			
 			// TODO: Mutation
-			ePopulation = ga.mutateEPopulation(ePopulation);
 			
 			// TODO: evaluate population
 			ga.evalEPopulation(ePopulation);
