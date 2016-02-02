@@ -148,39 +148,7 @@ public class GeneticAlgorithm {
 		return newEPopulation;
 	}
 	
-	public EPopulation mutateEPopulation(EPopulation ePopulation) {
-		EPopulation newEPopulation = new EPopulation(this.populationSize);
-		
-		// Fitnessly loop over the actual ePopulation
-		for (int ePopulationIndex = 0; ePopulationIndex < ePopulation.size(); ePopulationIndex++) {
-			Android android = ePopulation.getFittest(ePopulationIndex);
-			
-			// Loop over an android's eGenes
-			for (int eGeneIndex = 0; eGeneIndex < android.getEChromosomeLength(); eGeneIndex++) {
-				// is this an MVA (Most Valuable Android)? Is this android part of the elite?
-				// If this is an elite android then we skeep the mutation he will reach the next generation
-				// as is.
-				if (ePopulationIndex >= this.elitismCount) {
-					// Will this eGene (E)naturally mutate?
-					if (this.mutationRate > Math.random()) {
-						int newEGene = 1;
-						if (android.getEGene(eGeneIndex) == 1) {
-							newEGene = 0;
-						}
-						
-						// E-mutation
-						android.setEGene(eGeneIndex, newEGene);
-					}
-				}
-			}
-			
-			// Add the android to the new EPopulation
-			newEPopulation.setAndroid(ePopulationIndex, android);
-		}
-		
-		return newEPopulation;
-		
-	}
+	
 	
 	
 }

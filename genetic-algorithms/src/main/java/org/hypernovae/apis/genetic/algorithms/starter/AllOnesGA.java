@@ -3,8 +3,7 @@ package org.hypernovae.apis.genetic.algorithms.starter;
 public class AllOnesGA {
 	public static void main(String[] args) {
 		// Creates a GA object
-		// Now we have implemented elitism - impacted crossover and mutation
-		GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.95, 2);
+		GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.95, 0);
 		
 		// Init the population
 		EPopulation ePopulation = ga.initEPopulation(50);
@@ -22,7 +21,6 @@ public class AllOnesGA {
 			ePopulation = ga.crossoverEPopulation(ePopulation);
 			
 			// TODO: Mutation
-			ePopulation = ga.mutateEPopulation(ePopulation);
 			
 			// TODO: evaluate population
 			ga.evalEPopulation(ePopulation);
