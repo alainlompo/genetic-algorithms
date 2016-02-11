@@ -42,6 +42,17 @@ public class EpopulationTest {
 		}
 	}
 	
+	@Test
+	public void getFittest_ok_Test() {
+		EPopulation ePop = new EPopulation(3,2);
+		ePop.getAndroids()[0].setFitness(0.25);
+		ePop.getAndroids()[1].setFitness(0.11);
+		ePop.getAndroids()[2].setFitness(0.86);
+		assertEquals(Double.valueOf( 0.11), Double.valueOf(ePop.getFittest(2).getFitness()));
+		assertEquals(Double.valueOf(0.25), Double.valueOf(ePop.getFittest(1).getFitness()));
+		assertEquals(Double.valueOf(0.86), Double.valueOf(ePop.getFittest(0).getFitness()));
+	}
+	
 	
 	
 }
