@@ -72,7 +72,7 @@ public class EpopulationTest {
 		for (Android a: ePop.getAndroids()) {
 			assertTrue(isInList(a, droids));
 		}
-		
+		assertEquals(0, droids.size());
 	}
 	
 	private boolean isInList(Android a, List<Android> list) {
