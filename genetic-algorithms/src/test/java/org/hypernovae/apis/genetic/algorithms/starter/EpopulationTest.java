@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class EpopulationTest {
@@ -59,7 +62,26 @@ public class EpopulationTest {
 	 */
 	@Test
 	public void shuffle_keeps_same_droids_ok_Test() {
-		assertTrue(true);
+		EPopulation ePop = new EPopulation(3,2);
+		List<Android> droids = new ArrayList<Android>();
+		for (Android a: ePop.getAndroids()) {
+			droids.add(a);
+		}
+		
+		ePop.shuffle();
+		for (Android a: ePop.getAndroids()) {
+			assertTrue(isInList(a, droids));
+		}
+		
+	}
+	
+	private boolean isInList(Android a, List<Android> list) {
+		boolean result = false;
+		if (list.contains(a)) {
+			result = true;
+			list.remove(a);
+		}
+		return result;
 	}
 	
 	
