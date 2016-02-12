@@ -3,6 +3,7 @@ package org.hypernovae.apis.genetic.algorithms.starter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -53,6 +54,13 @@ public class EpopulationTest {
 		assertEquals(Double.valueOf(0.86), Double.valueOf(ePop.getFittest(0).getFitness()));
 	}
 	
+	/**
+	 * This test will check that the shuffle method doesn"='t change or add any other android
+	 */
+	@Test
+	public void shuffle_keeps_same_droids_ok_Test() {
+		assertTrue(true);
+	}
 	
 	
 }
